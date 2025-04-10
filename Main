@@ -1,0 +1,227 @@
+import turtle 
+from turtle import *
+
+
+window = turtle.Screen()
+window.bgcolor('white')
+window.title("ore click")
+window.screensize(1080,2000)
+window.tracer(0)
+tk_window = window.getcanvas().winfo_toplevel()
+tk_window.resizable(False, False)
+
+
+window.register_shape("image.gif")
+
+error_pen = turtle.Turtle()
+
+total = 0
+key = False
+key2 = False
+key3 = False
+key4 = False
+
+def insufficent_funds_pen():
+     error_pen.color("black")
+     error_pen.penup()
+     error_pen.goto(400,450)
+     error_pen.write("insufficent funds") 
+     window.ontimer(error_pen.clear, 5000)
+
+
+def up1(x, y):
+    error_pen.hideturtle()
+    error_pen.color("black")
+    error_pen.penup()
+    error_pen.goto(-450,-150)
+    error_pen.write("insufficent funds", align="center", font=("Ariel", 20, "normal"))
+    window.ontimer(error_pen.clear, 5000)
+
+def up2(x, y):
+    error_pen.hideturtle()
+    error_pen.color("black")
+    error_pen.penup()
+    error_pen.goto(-450, -280)
+    error_pen.write("insufficent funds", align="center", font=("Ariel", 20, "normal"))
+    
+def up3(x, y):
+    error_pen.hideturtle()
+    error_pen.color("black")
+    error_pen.penup()
+    error_pen.goto(-450, -400)
+
+
+def upgrade_1(x, y):
+    global total, key, error_pen
+    if total >= 50:
+        total -= 50
+        key = "upgrade1"
+        print("you have upgraded +5")
+    else:
+        up1(x,y)
+
+def upgrade_2(x, y):
+    global total, key2
+    if total >= 500:
+        total -= 500
+        key2 = "upgrade2"
+        print("upgrade +10")
+    else:
+        up2(x,y)
+        
+
+def upgrade_3(x,y):
+    global total, key3
+    if total >= 1000:
+        total -= 1000
+        key3 = "upgrade3"
+        print("you have upgraded +20")
+    else:
+        writeing_of_idk(x,y)
+        
+
+def upgrade_4():
+    global total, key4
+    if total >= 10:
+        total -= 10
+        key4 = "upgrade4"
+        print("i have figured it out")
+        auto_click_50()
+    else:
+        print("Insufficent funds")
+        
+
+
+
+def button_click(x,y):
+    global total, key, key2, key3, key4
+    total += 1
+    print(total)
+    if key == "upgrade1":
+        total += 5
+        print(total)
+    if key2 == "upgrade2":
+        total += 10
+        print(total)
+    if key3 == "upgrade3":
+        total += 20
+        print(total)
+
+def auto_click_50(x,y):
+    global total, key4
+    if key4 == "upgrade4":
+        total += 50
+        print(total)
+        window.ontimer(auto_click_50,  1000)
+    else:
+        print("insufficent funds")
+
+window.register_shape("credit.gif")
+window.register_shape("upgrade_iron_ore.gif")
+window.register_shape("upgrade_one.gif")
+window.register_shape("iron_ore.gif")
+window.register_shape("+10.gif")
+window.register_shape("+20.gif")
+window.register_shape("123.gif")
+
+up20 = turtle.Turtle()
+up20.shape("+20.gif")
+up20.goto(-450, -450)
+up20.speed(0)
+up20.clear()
+
+up10 = turtle.Turtle()
+up10.shape("+10.gif")
+up10.goto(-450, -320)
+up10.speed(0)
+up10.clear()
+
+upgrade_one = turtle.Turtle()
+upgrade_one.shape("123.gif")
+upgrade_one.speed(0)
+upgrade_one.goto(-450,-200)
+upgrade_one.clear()
+
+buttonofore = turtle.Turtle()
+buttonofore.shape("upgrade_iron_ore.gif")
+buttonofore.speed(0)
+buttonofore.goto(400,400)
+buttonofore.clear()
+
+credit = turtle.Turtle()
+credit.shape("credit.gif")
+credit.speed(0)
+credit.goto(-593,950)
+credit.clear()
+
+copper_ore = turtle.Turtle()
+copper_ore.shape("image.gif")
+copper_ore.speed(0)
+copper_ore.clear()
+
+pen = turtle.Turtle()
+pen.hideturtle()
+pen.color("black")
+pen.penup()
+pen.goto(0,300)
+pen.write(f"Total clicks: {total}", align="center", font=("Ariel", 40, "normal"))
+pen.write(f"Total clicks: {total}", align="center", font=("Ariel", 40, "normal"))
+
+def credits_writing(x,y):
+    global cred
+    cred = turtle.Turtle()
+    cred.goto(-593, 960)
+    cred.write("Created By: Master of Hamburgers")
+    window.ontimer(cred.clear, 10000)
+
+def writeing_of_idk(x,y):
+    error_pen.hideturtle()
+    error_pen.color("black")
+    error_pen.penup()
+    error_pen.goto(-450,-410)
+    error_pen.write("insufficent funds", align="center", font=("Ariel", 20, "normal"))
+    window.ontimer(error_pen.clear, 5000)
+
+
+def idk():
+    global pen, total
+    pen.clear() 
+    pen.goto(0, 400)  
+    pen.write(f"Total clicks: {total}", align="center", font=("Ariel", 40, "normal")) 
+    window.ontimer(idk, 16)
+
+
+error_pen = turtle.Turtle()
+
+
+def name(x, y):
+    global total, copper_ore
+    if total >= 10:
+        copper_ore.hideturtle()
+        copper_ore.shape("iron_ore.gif")
+        copper_ore.speed(0)
+    else:
+        total< 10
+        Name(x, y)
+        
+
+def Name(x,y):
+    error_pen.hideturtle()
+    error_pen.color("black")
+    error_pen.penup()
+    error_pen.goto(400,450)
+    error_pen.write("insufficent funds", align="center", font=("Ariel", 20, "normal"))
+    window.ontimer(error_pen.clear, 5000)
+
+
+credit.onclick(credits_writing)
+upgrade_one.onclick(upgrade_1)
+copper_ore.onclick(button_click)
+buttonofore.onclick(name)
+up10.onclick(upgrade_2)
+up20.onclick(upgrade_3)
+
+idk()
+
+window.update()
+window.mainloop()
