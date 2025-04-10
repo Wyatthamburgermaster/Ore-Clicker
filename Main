@@ -20,6 +20,7 @@ key = False
 key2 = False
 key3 = False
 key4 = False
+key5 = False
 
 def insufficent_funds_pen():
      error_pen.color("black")
@@ -90,7 +91,11 @@ def upgrade_4():
     else:
         print("Insufficent funds")
         
-
+def upgrade_5():
+    global total, key5
+    if total >= 10:
+        total -= 10
+        key5 = "upgrade5"
 
 
 def button_click(x,y):
@@ -123,6 +128,7 @@ window.register_shape("iron_ore.gif")
 window.register_shape("+10.gif")
 window.register_shape("+20.gif")
 window.register_shape("123.gif")
+window.register_shape("version.gif")
 
 up20 = turtle.Turtle()
 up20.shape("+20.gif")
@@ -166,6 +172,21 @@ pen.penup()
 pen.goto(0,300)
 pen.write(f"Total clicks: {total}", align="center", font=("Ariel", 40, "normal"))
 pen.write(f"Total clicks: {total}", align="center", font=("Ariel", 40, "normal"))
+
+version = turtle.Turtle()
+version.shape("version.gif")
+version.speed(0)
+version.goto(550,-950)
+version.clear()
+
+def version_writing(x,y):
+    global vw
+    vw = turtle.Turtle()
+    vw.goto(500,-930)
+    vw.write("Not Done/In develpment")
+    
+
+
 
 def credits_writing(x,y):
     global cred
@@ -220,6 +241,7 @@ copper_ore.onclick(button_click)
 buttonofore.onclick(name)
 up10.onclick(upgrade_2)
 up20.onclick(upgrade_3)
+version.onclick(version_writing)
 
 idk()
 
